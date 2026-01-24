@@ -48,9 +48,15 @@ function arrayMove3() {
     let insertPos = 0
     
     for (let i = 0; i < x.length; i++) {
-        console.log(x[i])
+        if(x[i] !== 0 ){
+		x[insertPos++] = x[i]
+        }
+    }
+    while (insertPos< x.length){
+	x[insertPos++] = 0
     }
 
+	console.log(x)
 }
 
 arrayMove3();
