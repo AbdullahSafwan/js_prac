@@ -1,6 +1,6 @@
 const a = {
     "Name": "Start Industries",
-    "Year Founded 1": 2000,
+    "Year Founded 1 WWW": 2000,
     "Addresses home": [{
         "Address Type": "Home",
         "Street Name": "Virginia",
@@ -13,19 +13,25 @@ const a = {
 }
 
 
-Object.keys(a).map(key => {
-    let newKey
-    const splittedKey = (key.split(' '))
-    if (splittedKey.length > 1) {
-        newKey = splittedKey[0].toLowerCase();
-        for (let i = 1; i < splittedKey.length; i++) {
-        	
-            newKey += (splittedKey[i].at(0).toUpperCase()+splittedKey[i].slice(i).toLowerCase())
+const toCamelCase = (obj) => {
+
+    Object.keys(obj).forEach(key => {
+        let newKey
+        const splittedKey = (key.split(' '))
+        if (splittedKey.length > 1) {
+            newKey = splittedKey[0].toLowerCase();
+            for (let i = 1; i < splittedKey.length; i++) {
+
+                newKey += (splittedKey[i].at(0).toUpperCase() + splittedKey[i].slice(1).toLowerCase())
+            }
+        } else {
+            newKey = splittedKey[0].toLowerCase();
         }
-    } else {
-        newKey = splittedKey[0].toLowerCase();
-    }
-    a[newKey] = a[key];
-    delete a[key]
-})
-console.log(a)
+        obj[newKey] = obj[key];
+        delete obj[key]
+    })
+    console.log(obj)
+
+}
+
+toCamelCase(a)
