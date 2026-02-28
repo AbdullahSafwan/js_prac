@@ -1,7 +1,7 @@
 const a = {
     "Name": "Start Industries",
-    "Year Founded": 2000,
-    "Addresses": [{
+    "Year Founded 1": 2000,
+    "Addresses home": [{
         "Address Type": "Home",
         "Street Name": "Virginia",
         "Zip Code": 12345
@@ -14,10 +14,16 @@ const a = {
 
 
 Object.keys(a).map(key => {
-    const x = key.split(' ')[0].toLowerCase();
-    const y = key.split(' ')[1];
-    const newKey = y?x+y:x
-    console.log(newKey);
+    let newKey
+    const splittedKey = (key.split(' '))
+    if (splittedKey.length > 1) {
+        newKey = splittedKey[0].toLowerCase();
+        for (let i = 1; i < splittedKey.length; i++) {
+            newKey += splittedKey[i]
+        }
+    } else {
+        newKey = splittedKey[0].toLowerCase();
+    }
     a[newKey] = a[key];
     delete a[key]
 })
