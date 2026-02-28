@@ -19,7 +19,8 @@ Object.keys(a).map(key => {
     if (splittedKey.length > 1) {
         newKey = splittedKey[0].toLowerCase();
         for (let i = 1; i < splittedKey.length; i++) {
-            newKey += splittedKey[i]
+        	
+            newKey += (splittedKey[i].at(0).toUpperCase()+splittedKey[i].slice(i).toLowerCase())
         }
     } else {
         newKey = splittedKey[0].toLowerCase();
